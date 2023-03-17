@@ -10,12 +10,13 @@ const initRepo = function(){
   app.use(express.urlencoded());
   app.use(cors());
   
-  app.post("/api/utilisateur", (req, res) => {
+  app.post("/api/livre", (req, res) => {
     // Attention normalement avant d'envoyer des données en base il faut les valider coté front ET coté serveur
-    let username = req.body.username;
-    let mdp = req.body.mdp;
+    let titre = req.body.titre;
+    let auteur = req.body.auteur;
+    let nbpages = req.body.nbpages;
   
-    let query = `INSERT INTO UTILISATEUR (username, mdp) VALUES ('${username}', '${mdp}');`;
+    let query = `INSERT INTO LIVRE (titre, auteur, nbpages, disponible) VALUES ('${titre}', '${auteur}', '${nbpages}', true);`;
   
     console.log("POST Receptionné par le serveur");
   
@@ -42,13 +43,13 @@ const initRepo = function(){
         res.status(500).json({
           msg: "Some thing went wrong please try again",
         });
-        console.log("probleme survenu lors de la récupération des users");
+        console.log("probleme survenu lors de la récupération des livres");
       } else {
         res.status(200).json({
-          msg: "Utilisateurs récupérés",
+          msg: "Livres récupérés",
           data: result,
         });
-        console.log("Users reçu depuis la base");
+        console.log("Livres reçu depuis la base");
       }
     });
   });

@@ -14,9 +14,24 @@ function getLivres() {
     })
     .then((res) => {
         for (const livre of res.data.data){
-            mesLivres.push(new Livre(livre.titre, livre.auteur, livre.nbpages, livre.disponible))
+            mesLivres.push(new Livre(livre.titre, livre.auteur, livre.nbpages, livre.disponible == 1 ? true : false))
         }
         displayLivres();
+    })
+    .catch(() => {
+      alert("Something Went Wrong");
+    });
+}
+
+function addLivre(mLivre) {
+    axios
+    .post("http://localhost:8081/api/livre", {
+        titre: mLivre.titre,
+        auteur: mLivre.auteur,
+        nbpages: mLivre.nbPages,
+    })
+    .then((res) => {
+        console.log("Livre ajouté !", res.data);
     })
     .catch(() => {
       alert("Something Went Wrong");
@@ -38,9 +53,12 @@ function ajouterLivre() {
     let monLivre = new Livre(titre, auteur, nbPage);
     // Insertion dans le tableau JS mesLivres
     mesLivres.push(monLivre);
+    // Insertion de mon livre en base
+    addLivre(monLivre)
     // Insertion dans le tableau du DOM, l'élément table
     monTableau.insertAdjacentElement('beforeend', monLivre.getLigneLivreAvecBouton());
     document.getElementById('ajoutLivre').reset();
+
 }
 
 function actualiserListe() {
