@@ -14,7 +14,7 @@ function getLivres() {
     })
     .then((res) => {
         for (const livre of res.data.data){
-            mesLivres.push(new Livre(livre.id, livre.titre, livre.auteur, livre.nbpages, livre.disponible))
+            mesLivres.push(new Livre(livre.titre, livre.auteur, livre.nbpages, livre.disponible))
         }
         displayLivres();
     })

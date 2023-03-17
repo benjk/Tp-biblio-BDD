@@ -1,7 +1,7 @@
 class Livre {
   /** syntaxe ES6 dispo est défini à true par défaut si non-renseigné */
-  constructor(id, titre, auteur, nbPages, dispo = true) {
-    this.id = id;
+
+  constructor(titre, auteur, nbPages, dispo = true) {
     this.titre = titre;
     this.auteur = auteur;
     this.nbPages = nbPages;
