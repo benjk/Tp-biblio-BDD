@@ -14,7 +14,7 @@ function getLivres() {
     })
     .then((res) => {
         for (const livre of res.data.data){
-            mesLivres.push(new Livre(livre.titre, livre.auteur, livre.nbpages, livre.disponible == 1 ? true : false))
+            mesLivres.push(new Livre(livre.id, livre.titre, livre.auteur, livre.nbpages, livre.disponible == 1 ? true : false))
         }
         displayLivres();
     })
@@ -32,6 +32,7 @@ function addLivre(mLivre) {
     })
     .then((res) => {
         console.log("Livre ajouté !", res.data);
+        mesLivres[mesLivres.length - 1].id = res.data.insertId
     })
     .catch(() => {
       alert("Something Went Wrong");
@@ -50,7 +51,7 @@ function ajouterLivre() {
     let titre = document.getElementById('inputTitre').value;
     let auteur = document.getElementById('inputAuteur').value;
     let nbPage = document.getElementById('inputNbPage').value;
-    let monLivre = new Livre(titre, auteur, nbPage);
+    let monLivre = new Livre(0,titre, auteur, nbPage);
     // Insertion dans le tableau JS mesLivres
     mesLivres.push(monLivre);
     // Insertion de mon livre en base

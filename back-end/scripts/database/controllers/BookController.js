@@ -29,6 +29,7 @@ const initRepo = function(){
       } else {
         res.status(200).json({
           msg: "Utilisateur enregistré",
+          insertId: result.insertId
         });
         console.log("User reçu par la bdd");
       }
