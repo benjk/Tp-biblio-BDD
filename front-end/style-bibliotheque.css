@@ -1,0 +1,52 @@
+body {
+  background-color: rgb(96, 147, 114);
+  font-family: "Open Sans", sans-serif;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+ h2 {
+  margin-right: 4em;
+ }
+
+.vertical-container {
+  margin-left: 1em;
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+
+.center-children {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+input, select {
+  margin-right: 0.8em;
+}
+
+table{
+  margin : auto ;
+  width : 1000px ;
+  border : 2px solid green ;
+}
+
+thead{
+  background-color: green;
+}
+
+td, th{
+  border : 1px solid white;
+  text-align : center;
+  padding: 0.3em;
+}
+
+.buttonEmpruntLivre {
+  border: 1px solid lime;
+  color: green;
+}
+

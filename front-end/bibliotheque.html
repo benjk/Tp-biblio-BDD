@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style-bibliotheque.css" />
+    <title>Bibliotheque</title>
+  </head>
+  <body>
+    <h1>Ma Bibliothèque</h1>
+    <div id="containerAjoutLivre" class="vertical-container center-children">
+      <h2>Ajouter un livre</h2>
+      <form id="ajoutLivre" onsubmit="ajouterLivre(); return false">
+        <label for="inputTitre">Titre</label>
+        <input id="inputTitre" type="text" required/>
+        <label for="inputAuteur">Auteur</label>
+        <input id="inputAuteur" type="text" required/>
+        <label for="inputNbPage">Nombre de pages</label>
+        <input id="inputNbPage" type="number" required/>
+        <button id="buttonAjouter" type="submit">Ajouter</button>
+      </form>
+    </div>
+    <div id="containerSelectionListe" class="vertical-container center-children">
+      <h2>Filtrer</h2>
+      <form id="actualiserListe" onsubmit="actualiserListe(); return false">
+        <label for="selectListeLivres">Disponibilité</label>
+        <select id="selectListeLivres">
+          <option selected value=0>Tous les livres</option>
+          <option value=1>Livres disponibles</option>
+          <option value=2>Livres empruntés</option>
+        </select>
+        <label for="chercherAuteur">Chercher par auteur</label>
+        <input id="inputChercherAuteur" type="text" />
+        <label for="inputChercherPageMax">Nombre de page maximum</label>
+        <input id="inputChercherPageMax" type="number" />
+        <button id="buttonReset" type="reset">Reset</button>
+        <button id="buttonActualiser" type="submit">Actualiser</button>
+        
+      </form>
+    </div>
+    <div id="containerAffichageLivres" class="vertical-container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"></script>
+    <script src="Livre.js"></script>
+    <script src="bibliotheque.js"></script>
+  </body>
+</html>
