@@ -35,7 +35,37 @@ const initRepo = function(){
       }
     });
   });
+
+  app.post("/api/emprunter", (req, res) => {
+    console.log(req.body);
+    let livreId = req.body.id;
+    let disponible = req.body.disponible;
+    console.log("mon ID: " + livreId);
+    console.log("ma dispo: " + disponible);
   
+    let query = `UPDATE LIVRE SET disponible = ${disponible} WHERE id = ${livreId};`;
+  
+    console.log("POST Receptionné par le serveur");
+  
+    connection.query(query, (err, result) => {
+      if (err) {
+        res.status(500).json({
+          msg: "Some thing went wrong please try again",
+        });
+        console.log("probleme survenu lors du post d'un Livre");
+      } else {
+        res.status(200).json({
+          msg: "Livre modifié"
+        });
+        console.log("Livre reçu par la bdd");
+      }
+    });
+  });
+
+
+  // Initialisation bodyparser OBLIGATOIRE car juste avant le GET
+  app.use(express.json());
+  app.use(express.urlencoded());
   app.get("/api/livres", (req, res) => {
     let query = `SELECT * FROM LIVRE;`;
   
