@@ -37,11 +37,8 @@ const initRepo = function(){
   });
 
   app.post("/api/emprunter", (req, res) => {
-    console.log(req.body);
     let livreId = req.body.id;
     let disponible = req.body.disponible;
-    console.log("mon ID: " + livreId);
-    console.log("ma dispo: " + disponible);
   
     let query = `UPDATE LIVRE SET disponible = ${disponible} WHERE id = ${livreId};`;
   
