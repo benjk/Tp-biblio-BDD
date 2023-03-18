@@ -62,6 +62,7 @@ class Livre {
   emprunter() {
     if (this.dispo) {
       this.dispo = false;
+      this.updateEmprunt()
       return true;
     } else {
       return false;
@@ -70,5 +71,20 @@ class Livre {
 
   rendre() {
     this.dispo = true;
+    this.updateEmprunt()
+  }
+
+  updateEmprunt() {
+    axios
+    .post("http://localhost:8081/api/emprunter", {
+        id: this.id,
+        disponible: this.dispo,
+    })
+    .then((res) => {
+        console.log("Emprunt modifié !", res.data);
+    })
+    .catch(() => {
+      alert("Something Went Wrong");
+    });
   }
 }
